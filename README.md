@@ -1,1 +1,1 @@
-Django_new
+DJANGO_NEWD
