@@ -3,7 +3,7 @@ from rest_framework import serializers
 from drf_spectacular.utils import extend_schema_field, OpenApiTypes
 import json
 
-from ..models import Product, Category
+from products.models import Product, Category
 
 
 class ProductSerializer(serializers.ModelSerializer):
