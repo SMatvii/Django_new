@@ -1,10 +1,9 @@
 import pytest
 
 
-import pytest_check as check
 from products.serializers.product_serializers import ProductSerializer
 
-from .fixtures import category, product_discount, product, order
+from .fixtures import product_discount, product
 
 
 @pytest.mark.django_db

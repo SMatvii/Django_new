@@ -9,11 +9,13 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 from os import getenv
 from datetime import timedelta
+
+sys.dont_write_bytecode = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -6,7 +6,7 @@ from rest_framework.test import APIClient
 
 from accounts.models import Profile
 from products.models import Cart, Product, Category, CartItem, Order, OrderItem
-from .fixtures import product, product_discount, order
+from .fixtures import product, product_discount
 
 
 @pytest.mark.django_db

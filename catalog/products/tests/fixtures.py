@@ -3,13 +3,13 @@ from products.models import Category, Product
 
 
 @pytest.fixture
-def product(category_fixtures):
+def category():
     return Category.objects.create(name="test_category_fixtures")
 
 
 
 @pytest.fixture
-def create_products(category_fixtures):
+def product():
     category =Category.objects.create(
         name = 'test-category'
     )
@@ -22,7 +22,7 @@ def create_products(category_fixtures):
     return product
 
 @pytest.fixture
-def product_discount(category_fixtures):
+def product_discount():
     category = Category.objects.create(name="test_user")
     return Product.objects.create(
         name="test_product",
