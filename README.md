@@ -1,1 +1,1 @@
-DJANGO_NEW
+*****DJANGO_NEW*****
