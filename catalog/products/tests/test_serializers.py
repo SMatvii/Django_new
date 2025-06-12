@@ -73,3 +73,34 @@ def test_product_serializer_valid(category_fixtures):
     
     assert serilaizer.is_valid()
     assert "category" not in serilaizer.data
+    
+    @pytest.mark.django_db
+    def test_product_serializer_method_field(product_discount):
+        serializer = ProductSerializer(product_discount)
+        
+        assert serializer.data['discount_price'] == product_discount.discount_price
+        assert serializer.data['discount_price'] == 80
+        
+        
+    @pyetst.mark.django_db
+    def test_order_serializer_readonly(user):
+        data = {
+            "user": user.id,
+            "contcact_name": "test-name",
+            "contact_email": "test@gmail.com",
+            "contact_phone": "38093923232",
+            "address": "test-address", 
+        }
+        
+        serializer = OrderSerializer(datat=data)
+        
+        assert serializer.is_valid()
+        assert "product" not in serializer.validated_data
+        
+        order = serializer.save()
+        
+        serializer = OrderSerializer(data=order)
+        
+        assert1 = serializer.is_valid()
+        print(serializer.errors)
+        assert assert1

@@ -1,12 +1,9 @@
 import pytest
 from products.models import Category, Product
-from .fixtures import category_fixtures
-
 
 @pytest.fixture
 def category():
     return Category.objects.create(name="test_category_fixtures")
-
 
 
 @pytest.fixture
