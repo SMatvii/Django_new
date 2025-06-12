@@ -1,5 +1,6 @@
 import pytest
 from products.models import Category, Product
+from .fixtures import category_fixtures
 
 
 @pytest.fixture

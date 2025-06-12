@@ -12,6 +12,5 @@ django.setup()
 @pytest.fixture
 def user():
     return User.objects.create_user(
-        username="test", password="password_test_user"
+        username="testusertestusertestuser", password="password_test_user"
     )
-    
