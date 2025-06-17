@@ -1,10 +1,9 @@
 import pytest
 
 
-from products.serializers.product_serializers import ProductSerializer
+from products.serializers.product_serializers import ProductSerializer, OrderSerializer
 
-from .fixtures import product_discount, product
-
+from .fixtures import category, product_with_discount, product, order
 
 @pytest.mark.django_db
 def test_product_serializer_valid(category):
@@ -82,7 +81,7 @@ def test_product_serializer_valid(category_fixtures):
         assert serializer.data['discount_price'] == 80
         
         
-    @pyetst.mark.django_db
+    @pytest.mark.django_db
     def test_order_serializer_readonly(user):
         data = {
             "user": user.id,
@@ -95,12 +94,22 @@ def test_product_serializer_valid(category_fixtures):
         serializer = OrderSerializer(datat=data)
         
         assert serializer.is_valid()
-        assert "product" not in serializer.validated_data
+        assert "items" not in serializer.validated_data
         
         order = serializer.save()
         
-        serializer = OrderSerializer(data=order)
+        serializer = OrderSerializer(order)
         
-        assert1 = serializer.is_valid()
-        print(serializer.errors)
-        assert assert1
+        assert "items" in serializer.data
+        
+        
+@pytest.mark.django_db
+def test_order_serializer_items(order):
+
+
+    serializer = OrderSerializer(order)
+    
+    items = serializer.data["items"]
+    
+    assert len(items) == 2
+    
