@@ -1,7 +1,6 @@
 # Django_new
 
 **Django_new** is a small Django-based project that implements a simple e-commerce catalog with user registration, authentication, and profile management.
-
 ---
 
 ## Features
@@ -11,7 +10,6 @@
 - **Shopping cart** functionality
 - **User registration/authentication**, profile page and profile editing, email confirmation
 - **Responsive interface** using Bootstrap 5
-
 ---
 
 ## Project Structure
@@ -91,5 +89,4 @@ python manage.py runserver
 - **product_details.html** — product detail view
 - **register.html** — user registration form
 - **about.html** — "About Us" page
-
 ---
