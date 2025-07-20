@@ -31,6 +31,7 @@ urlpatterns = [
     path("cart_detail/", cart_detail, name="cart_detail"),
     path("cart_delete/<int:product_id>/", cart_delete, name="cart_delete"),
     path("checkout/", checkout, name="checkout"),
+    path('', include(router.urls)),
 ]
 
 

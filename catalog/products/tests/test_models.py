@@ -6,7 +6,7 @@ from rest_framework.test import APIClient
 
 from accounts.models import Profile
 from products.models import Cart, Product, Category, CartItem, Order, OrderItem
-from .fixtures import product, product_discount
+from .fixtures import product, product_with_discount
 
 
 @pytest.mark.django_db
@@ -39,18 +39,18 @@ def test_cart_model_multiple_products(user, product):
 
 
 @pytest.mark.django_db
-def test_cart_model_discount_product(user, product_discount):
-    cart_item = CartItem.objects.create(cart=user.cart, product=product_discount)
+def test_cart_model_discount_product(user, product_with_discount):
+    cart_item = CartItem.objects.create(cart=user.cart, product=product_with_discount)
     assert cart_item.item_total == 90
     assert user.cart.total == 90
 
 
 @pytest.mark.django_db
-def test_cart_model_different_products(user, product_discount, product):
+def test_cart_model_different_products(user, product_with_discount, product):
 
     cart_item = CartItem.objects.create(
         cart=user.cart,
-        product=product_discount,
+        product=product_with_discount,
     )
 
     cart_item_2 = CartItem.objects.create(
@@ -80,22 +80,22 @@ def test_order_model_multiple_items(order, product):
 
 
 @pytest.mark.django_db
-def test_order_model_discount_item(order, product_discount):
+def test_order_model_discount_item(order, product_with_discount):
     order_item = OrderItem.objects.create(
-        order=order, product=product_discount, price=product_discount.price
+        order=order, product=product_with_discount, price=product_with_discount.price
     )
 
     assert order_item.item_total == 90
 
 
 @pytest.mark.django_db
-def test_order_model_different_items(order, product_discount, product):
+def test_order_model_different_items(order, product_with_discount, product):
     order_item_1 = OrderItem.objects.create(
         order=order, product=product, price=product.discount_price
     )
 
     order_item_2 = OrderItem.objects.create(
-        order=order, product=product_discount, price=product_discount.price
+        order=order, product=product_with_discount, price=product_with_discount.price
     )
 
     assert order_item_1.item_total + order_item_2.item_total == 190
